@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint the Roses aid</title>
+    <link rel=stylesheet href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <h1><i>Paint the Roses</i> aid</h1>
+    <noscript>This site requires JavaScript</noscript>
+
+    <details>
+      <summary>Help</summary>
+
+      <p>
+      Click a button below to start a new cluesheet. Tap boxes to cycle between:
+      </p>
+      <ul>
+        <li>▢: Unknown</li>
+        <li><span style="color: red">✗</span>: Ruled out</li>
+        <li><span style="color: green">✓</span>: Ruled in</li>
+      </ul>
+
+      <aside>
+        A note on color-blindness: because this page does not use the original
+        flower shapes from <i>Paint the Roses</i>, it may not be particularly
+        color-blind friendly. The game uses flowers of different shapes to help
+        distinguish them beyond just color. I cannot find a reasonably portable
+        set of flower-like characters to use for the same purpose;
+        <a href="https://github.com/benknoble/paint-the-roses/issues">suggestions welcome</a>.
+      </aside>
+    </details>
+
+    <button type="button" onclick="chooseCard(event)" id="easy-button">Easy</button>
+    <button type="button" onclick="chooseCard(event)" id="medium-button">Medium</button>
+    <button type="button" onclick="chooseCard(event)" id="hard-button">Hard</button>
+
+    <table class="easy medium hard">
+      <thead>
+        <tr>
+          <th></th>
+          <th><span class="yellow">✾</span></th>
+          <th><span class="purple">✾</span></th>
+          <th><span class="pink">✾</span></th>
+          <th><span class="red">✾</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="red">✾</span></td>
+          <td onclick="toggle(event)"><span class="red">✾</span><span class="yellow">✾</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="red">✾</span><span class="purple">✾</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="red">✾</span><span class="pink">✾</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="red">✾</span><span class="red">✾</span><div class="toggle">▢</div></td>
+        </tr>
+        <tr>
+          <td><span class="pink">✾</span></td>
+          <td onclick="toggle(event)"><span class="pink">✾</span><span class="yellow">✾</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="pink">✾</span><span class="purple">✾</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="pink">✾</span><span class="pink">✾</span><div class="toggle">▢</div></td>
+        </tr>
+        <tr>
+          <td><span class="purple">✾</span></td>
+          <td onclick="toggle(event)"><span class="purple">✾</span><span class="yellow">✾</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="purple">✾</span><span class="purple">✾</span><div class="toggle">▢</div></td>
+        </tr>
+        <tr>
+          <td><span class="yellow">✾</span></td>
+          <td onclick="toggle(event)"><span class="yellow">✾</span><span class="yellow">✾</span><div class="toggle">▢</div></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="medium hard">
+      <thead>
+        <tr>
+          <th></th>
+          <th><span class="suit">♠</span></th>
+          <th><span class="suit">♥</span></th>
+          <th><span class="suit">♦</span></th>
+          <th><span class="suit">♣</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="suit">♣</span></td>
+          <td onclick="toggle(event)"><span class="suit">♣</span><span class="suit">♠</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="suit">♣</span><span class="suit">♥</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="suit">♣</span><span class="suit">♦</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="suit">♣</span><span class="suit">♣</span><div class="toggle">▢</div></td>
+        </tr>
+        <tr>
+          <td><span class="suit">♦</span></td>
+          <td onclick="toggle(event)"><span class="suit">♦</span><span class="suit">♠</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="suit">♦</span><span class="suit">♥</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="suit">♦</span><span class="suit">♦</span><div class="toggle">▢</div></td>
+        </tr>
+        <tr>
+          <td><span class="suit">♥</span></td>
+          <td onclick="toggle(event)"><span class="suit">♥</span><span class="suit">♠</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="suit">♥</span><span class="suit">♥</span><div class="toggle">▢</div></td>
+        </tr>
+        <tr>
+          <td><span class="suit">♠</span></td>
+          <td onclick="toggle(event)"><span class="suit">♠</span><span class="suit">♠</span><div class="toggle">▢</div></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="hard">
+      <thead>
+        <tr>
+          <th></th>
+          <th><span class="yellow">✾</span></th>
+          <th><span class="purple">✾</span></th>
+          <th><span class="pink">✾</span></th>
+          <th><span class="red">✾</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="suit">♣</span></td>
+          <td onclick="toggle(event)"><span class="suit">♣</span><span class="yellow">✾</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="suit">♣</span><span class="purple">✾</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="suit">♣</span><span class="pink">✾</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="suit">♣</span><span class="red">✾</span><div class="toggle">▢</div></td>
+        </tr>
+        <tr>
+          <td><span class="suit">♦</span></td>
+          <td onclick="toggle(event)"><span class="suit">♦</span><span class="yellow">✾</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="suit">♦</span><span class="purple">✾</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="suit">♦</span><span class="pink">✾</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="suit">♦</span><span class="red">✾</span><div class="toggle">▢</div></td>
+        </tr>
+        <tr>
+          <td><span class="suit">♥</span></td>
+          <td onclick="toggle(event)"><span class="suit">♥</span><span class="yellow">✾</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="suit">♥</span><span class="purple">✾</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="suit">♥</span><span class="pink">✾</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="suit">♥</span><span class="red">✾</span><div class="toggle">▢</div></td>
+        </tr>
+        <tr>
+          <td><span class="suit">♠</span></td>
+          <td onclick="toggle(event)"><span class="suit">♠</span><span class="yellow">✾</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="suit">♠</span><span class="purple">✾</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="suit">♠</span><span class="pink">✾</span><div class="toggle">▢</div></td>
+          <td onclick="toggle(event)"><span class="suit">♠</span><span class="red">✾</span><div class="toggle">▢</div></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </body>
+</html>
